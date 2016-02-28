@@ -27,7 +27,7 @@ input.large {
 
 .top-bar {
 	background: white;
-	margin-bottom: 75px;
+	margin-bottom: 130px;
 }
 
 .top-bar ul {
@@ -52,8 +52,7 @@ input.large {
   .logo-wrapper {
     position: relative; }
     .logo-wrapper .logo {
-      width: 118px;
-      height: 92px;
+      width: 300px;
       position: absolute;
       left: 50%;
       right: 50%;

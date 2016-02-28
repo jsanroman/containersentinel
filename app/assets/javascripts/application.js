@@ -81,7 +81,7 @@ load_control.controller('dashboard_ctrl', ['$scope', 'measureFactory', '$interva
             type: 'areaspline',
             data: [],
             pointStart: Date.UTC(2011, 0),
-            pointInterval: 30 * 24 * 36e5,
+            pointInterval: 36e5,
             color: '#FF0000',
             negativeColor: '#0088FF',
           }
