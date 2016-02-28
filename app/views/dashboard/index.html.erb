@@ -11,27 +11,27 @@
           <input type="button" value="Actualizar" class="button" ng-click="search()">
         </div>
       </div>
+      <div class="loading" ng-show="loading"><span>loading...</span></div>
     </div>
-    <div class="medium-4 columns"></div>
   </div>
 
   <div class="row">
 
-    <div class="medium-12 columns">
+    <div class="medium-12 columns container_highchart">
       <highchart id="chart1" config="tempGraphic" class="span9" ></highchart>
     </div>
   </div>
   
 
   <div class="row">
-    <div class="medium-12 columns">
+    <div class="medium-12 columns container_highchart">
       <highchart id="chart2" config="accelGraphic" class="span9" ></highchart>
     </div>
    
   </div>
 
   <div class="row">
-    <div class="medium-12 columns">
+    <div class="medium-12 columns container_highchart">
       <highchart id="chart2" config="gyroGraphic" class="span9" ></highchart>
     </div>
   </div>

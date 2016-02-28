@@ -16,6 +16,14 @@
 
  */
 
+body {
+  background: #eee;
+}
+
+h3 {
+  color: #777;
+}
+
 input.large {
   font-size: 1.25rem !important;
   height: 3em;
@@ -70,3 +78,21 @@ input.large {
     padding-right: 86px; }
     .top-bar-left ul {
       float: right; } }
+
+.container_highchart {
+  margin-top: 2em;
+}
+
+.loading {
+  text-align: right;
+}
+
+.loading span {
+  margin:auto; 
+  background: #fff198; 
+  color:#222; 
+  padding:3px 10px; 
+  border-radius: 5px; 
+  width: 100px; 
+  text-align:center; 
+}
