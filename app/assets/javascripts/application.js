@@ -17,8 +17,8 @@ var load_control = angular.module('load_control', ["highcharts-ng"]).run(['$root
 
 
 load_control.controller('dashboard_ctrl', ['$scope', 'measureFactory', '$interval', function ($scope, measureFactory, $interval) {
-    $scope.begin_date = moment().subtract(1, 'hours').format('YYYY-MM-DD, hh:mm:ss');
-    $scope.end_date   = moment().format('YYYY-MM-DD, hh:mm:ss');
+    $scope.begin_date = moment().subtract(1, 'hours').format('YYYY-MM-DD, HH:MM:SS');
+    $scope.end_date   = moment().format('YYYY-MM-DD, HH:MM:SS');
 
     $scope.temp_data = []
 
