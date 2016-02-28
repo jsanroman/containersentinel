@@ -3,6 +3,19 @@
 <div ng-controller="dashboard_ctrl">
 
   <div class="row">
+    <div class="medium-3 columns">
+      <input type="datetime" ng-model="begin_date">
+    </div>
+    <div class="medium-3 columns">
+      <input type="datetime" ng-model="end_date">
+    </div>
+    <div class="medium-2 columns">
+      <input type="button" value="Actualizar" class="button" ng-click="search()">
+    </div>
+    <div class="medium-4 columns"></div>
+  </div>
+
+  <div class="row">
     <div class="medium-8 columns">
       <highchart id="chart1" config="tempGraphic" class="span9" ></highchart>
     </div>

@@ -5,9 +5,9 @@ class Api::V1::MeasurementsController < ApplicationController
     @measurements = Measurement.order("datetime")
     @measurements = @measurements.where("kind=?", params[:kind])            if !params[:kind].blank?
     @measurements = @measurements.where("device_id=?", params[:device_id])  if !params[:device_id].blank?
-
-
-    # render json: @measurements.map{|m| [m.data1, m.datetime.to_time.to_i]}
+    @measurements = @measurements.where("datetime >= ?", "#{Chronic.parse(params[:begin_date], :endian_precedence => :little)}") if !params[:begin_date].blank?
+    @measurements = @measurements.where("datetime <= ?", "#{Chronic.parse(params[:end_date], :endian_precedence => :little)}")   if !params[:end_date].blank?
+    @measurements = @measurements.where("device_id=?", params[:device_id])  if !params[:device_id].blank?
   end
 
   def create
