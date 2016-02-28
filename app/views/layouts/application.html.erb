@@ -16,16 +16,22 @@
   </head>
 
   <body>
-    
-    <div class="top-bar">
-    <div class="row">
-    <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu="" role="menubar" data-dropdownmenu="dy40gu-dropdownmenu">
-    <li class="menu-text" role="menuitem" tabindex="0">Container Sentinel</li>
-    </ul>
+      <!-- Small Navigation -->
+  <div class="title-bar" data-responsive-toggle="nav-menu" data-hide-for="medium">
+    <a class="logo-small show-for-small-only" href="#"><img src="logo_400.png" /></a>
+    <button class="menu-icon" type="button" data-toggle></button>
+    <div class="title-bar-title">Menu</div>
+  </div>
+
+  <!-- Medium-Up Navigation -->
+  <nav class="top-bar" id="nav-menu">
+
+    <div class="logo-wrapper hide-for-small-only">
+      <div class="logo">
+        <img src="logo_400.png">
+      </div>
     </div>
-    </div>
-    </div>
+  </nav>
 
     <div class="row">
       <%= yield %>
