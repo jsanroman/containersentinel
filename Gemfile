@@ -48,3 +48,4 @@ end
 
 gem 'foundation-rails'
 gem 'chronic'
+gem 'rest-client'
