@@ -85,6 +85,9 @@ GEM
     faye-websocket (0.10.3)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
+    foundation-rails (6.1.2.0)
+      railties (>= 3.1.0)
+      sass (>= 3.3.0, < 3.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hiredis (0.6.1)
@@ -189,6 +192,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
+  foundation-rails
   jbuilder (~> 2.0)
   jquery-rails
   pg
