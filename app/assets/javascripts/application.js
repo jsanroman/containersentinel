@@ -21,46 +21,58 @@ load_control.controller('dashboard_ctrl', ['$scope', 'measureFactory', '$interva
     $scope.end_date   = moment().format('YYYY-MM-DD, HH:MM:SS');
 
     $scope.temp_data = []
+    $scope.loading = false;
 
     var reload_temp = function(begin_date, end_date) {
+      $scope.loading = true;
       measureFactory.find({kind: 'temp', begin_date: begin_date, end_date: end_date}).success(function(data){
         _data = _.map(data, function (line) {
           return [line.timestamp, line.data1];
         })
 
         $scope.tempGraphic.series[0].data = _data;
+        $scope.loading = false;
       }).error(function(response, status) {
       });
     }
 
     var reload_accel = function(begin_date, end_date) {
+      $scope.loading = true;
       measureFactory.find({kind: 'accel', begin_date: begin_date, end_date: end_date}).success(function(data){
-        _timestamp = _.map(data, 'timestamp')
+        _timestamp = _.map(data, function(line) {
+          return Highcharts.dateFormat('%H:%M:%S', line.timestamp)
+        });
         _data1 = _.map(data, 'data1')
         _data2 = _.map(data, 'data2')
         _data3 = _.map(data, 'data3')
 
+
+        $scope.accelGraphic.xAxis.categories = _timestamp;
         $scope.accelGraphic.series[0].data = _data1;
         $scope.accelGraphic.series[1].data = _data2;
         $scope.accelGraphic.series[2].data = _data3;
 
-        // $scope.accelGraphic.xAxis.categories = _timestamp;
+        $scope.loading = false;
       }).error(function(response, status) {
       });
     }
 
     var reload_gyro = function(begin_date, end_date) {
+      $scope.loading = true;
       measureFactory.find({kind: 'gyro', begin_date: begin_date, end_date: end_date}).success(function(data){
-        _timestamp = _.map(data, 'timestamp')
+        _timestamp = _.map(data, function(line) {
+          return Highcharts.dateFormat('%H:%M:%S', line.timestamp)
+        });
         _data1 = _.map(data, 'data1')
         _data2 = _.map(data, 'data2')
         _data3 = _.map(data, 'data3')
 
+        $scope.gyroGraphic.xAxis.categories = _timestamp;
         $scope.gyroGraphic.series[0].data = _data1;
         $scope.gyroGraphic.series[1].data = _data2;
         $scope.gyroGraphic.series[2].data = _data3;
 
-        // $scope.gyroGraphic.xAxis.categories = _timestamp;
+        $scope.loading = false;
       }).error(function(response, status) {
       });
     }
@@ -105,6 +117,9 @@ load_control.controller('dashboard_ctrl', ['$scope', 'measureFactory', '$interva
         title: {
             text: 'Acelerómetro'
         },
+        xAxis: {
+          categories: [],
+        },
         yAxis: {
             min: 0,
             stackLabels: {
@@ -136,6 +151,9 @@ load_control.controller('dashboard_ctrl', ['$scope', 'measureFactory', '$interva
     $scope.gyroGraphic = {
         title: {
             text: 'Giroscopio'
+        },
+        xAxis: {
+          categories: [],
         },
         yAxis: {
             min: 0,
