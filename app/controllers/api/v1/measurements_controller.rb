@@ -6,8 +6,13 @@ class Api::V1::MeasurementsController < ApplicationController
   end
 
   def create
+    logger.warn(params[:data])
+
     data  = params[:data].gsub(" ", "")
     data  = URI.decode(data)
+
+    logger.warn(data)
+
     data = data.split("\n")
 
     if data.size>0
