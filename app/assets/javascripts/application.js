@@ -65,15 +65,23 @@ load_control.controller('dashboard_ctrl', ['$scope', 'measureFactory', '$interva
       });
     }
 
-    $scope.search = function(begin_date, end_date) {
-      reload_temp(begin_date, end_date);
-      reload_accel(begin_date, end_date);
-      reload_gyro(begin_date, end_date);
+    $scope.search = function() {
+      reload_temp($scope.begin_date, $scope.end_date);
+      reload_accel($scope.begin_date, $scope.end_date);
+      reload_gyro($scope.begin_date, $scope.end_date);
     }
 
     $scope.tempGraphic = {
         title: {
             text: 'Temperatura'
+        },
+        xAxis: {        
+            type: 'datetime',
+            labels: {
+                formatter: function() {
+                    return Highcharts.dateFormat('%H:%M:%S', this.value);
+                }
+            }
         },
         series: [
           {
@@ -157,9 +165,9 @@ load_control.controller('dashboard_ctrl', ['$scope', 'measureFactory', '$interva
         ]
     }
 
-    $scope.search($scope.begin_date, $scope.end_date);
+    $scope.search();
     $interval(function() {
-      $scope.search($scope.begin_date, $scope.end_date);
+      $scope.search();
     }, 10000);
 
 }]);
