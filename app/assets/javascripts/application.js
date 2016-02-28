@@ -45,8 +45,29 @@ load_control.controller('dashboard_ctrl', ['$scope', 'measureFactory', '$interva
       });
     }
 
+    var reload_gyro = function() {
+      measureFactory.find({kind: 'gyro'}).success(function(data){
+        _timestamp = _.map(data, 'timestamp')
+        _data1 = _.map(data, 'data1')
+        _data2 = _.map(data, 'data2')
+        _data3 = _.map(data, 'data3')
+
+        $scope.gyroGraphic.series[0].data = _data1;
+        // if _data2
+          $scope.gyroGraphic.series[1].data = _data2;
+        // if _data3
+          $scope.gyroGraphic.series[2].data = _data3;
+
+        $scope.gyroGraphic.xAxis.categories = _timestamp;
+      }).error(function(response, status) {
+      });
+    }
+
 
     $scope.tempGraphic = {
+        title: {
+            text: 'Temperatura'
+        },
         series: [
           {
             name: 'Area',
@@ -66,6 +87,9 @@ load_control.controller('dashboard_ctrl', ['$scope', 'measureFactory', '$interva
     }
 
     $scope.accelGraphic = {
+        title: {
+            text: 'Acelerómetro'
+        },
         yAxis: {
             min: 0,
             stackLabels: {
@@ -95,33 +119,44 @@ load_control.controller('dashboard_ctrl', ['$scope', 'measureFactory', '$interva
     }
 
     $scope.gyroGraphic = {
-        series: [
-          {
-            "name": "Some data 2",
-            "data": [
-              5,
-              2,
-              2,
-              3,
-              5
-            ],
-            "type": "column",
-            "id": "series-2"
-          }
-        ],
-
-        func: function (chart) {
-            console.log(chart);
-            $scope.chartData = chart;
-            $scope.chartExport = $.proxy(chart.exportChart, chart);
+        title: {
+            text: 'Giroscopio'
+        },
+        yAxis: {
+            min: 0,
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+            }
+        },
+        series: [{
+          type: 'column',
+          name: 'Eje 1',
+        }, {
+          type: 'column',
+          name: 'Eje 2',
+        }, {
+          type: 'column',
+          name: 'Eje 3',
         }
+        ]
     }
 
     reload_accel();
     reload_temp();
+    reload_gyro();
     $interval(function() {
       reload_temp();
       reload_accel();
+      reload_gyro();
     }, 5000);
 
 
