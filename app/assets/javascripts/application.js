@@ -77,7 +77,7 @@ load_control.controller('dashboard_ctrl', ['$scope', 'measureFactory', '$interva
         },
         series: [
           {
-            name: 'Area',
+            name: 'Temperatura',
             type: 'areaspline',
             data: [],
             pointStart: Date.UTC(2011, 0),
@@ -114,13 +114,13 @@ load_control.controller('dashboard_ctrl', ['$scope', 'measureFactory', '$interva
         },
         series: [{
           type: 'column',
-          name: 'Eje 1',
+          name: 'Eje X',
         }, {
           type: 'column',
-          name: 'Eje 2',
+          name: 'Eje Y',
         }, {
           type: 'column',
-          name: 'Eje 3',
+          name: 'Eje Z',
         }
         ]
     }
@@ -146,13 +146,13 @@ load_control.controller('dashboard_ctrl', ['$scope', 'measureFactory', '$interva
         },
         series: [{
           type: 'column',
-          name: 'Eje 1',
+          name: 'Eje X',
         }, {
           type: 'column',
-          name: 'Eje 2',
+          name: 'Eje Y',
         }, {
           type: 'column',
-          name: 'Eje 3',
+          name: 'Eje Z',
         }
         ]
     }
