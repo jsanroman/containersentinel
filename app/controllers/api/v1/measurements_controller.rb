@@ -2,7 +2,12 @@ require 'date'
 
 class Api::V1::MeasurementsController < ApplicationController
   def index
-    @measurements = Measurement.all
+    @measurements = Measurement.order("datetime")
+    @measurements = @measurements.where("kind=?", params[:kind])            if !params[:kind].blank?
+    @measurements = @measurements.where("device_id=?", params[:device_id])  if !params[:device_id].blank?
+
+
+    # render json: @measurements.map{|m| [m.data1, m.datetime.to_time.to_i]}
   end
 
   def create
