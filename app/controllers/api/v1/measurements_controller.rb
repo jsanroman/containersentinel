@@ -8,7 +8,7 @@ class Api::V1::MeasurementsController < ApplicationController
   def create
     data  = params[:data].gsub(" ", "")
     data  = URI.decode(data)
-    data = data.split("\r\n")
+    data = data.split("\n")
 
     if data.size>0
       data.each do |line|
