@@ -1,13 +1,5 @@
 <h3>Dashboard <%=params[:reference]%></h3>
 
-<div>
-
-<% @measurements.each do |m| %>
-  <p><%=p m.inspect%></p>
-<% end %>
-
-</div>
-
 <div ng-controller="dashboard_ctrl">
 
   <div class="row">
