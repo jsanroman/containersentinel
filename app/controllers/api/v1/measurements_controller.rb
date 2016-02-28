@@ -6,7 +6,7 @@ class Api::V1::MeasurementsController < ApplicationController
     @measurements = @measurements.where("kind=?", params[:kind])            if !params[:kind].blank?
     @measurements = @measurements.where("device_id=?", params[:device_id])  if !params[:device_id].blank?
     @measurements = @measurements.where("datetime >= ?", "#{Chronic.parse(params[:begin_date], :endian_precedence => :little)}") if !params[:begin_date].blank?
-    @measurements = @measurements.where("datetime <= ?", "#{Chronic.parse(params[:end_date], :endian_precedence => :little)}")   if !params[:end_date].blank?
+    # @measurements = @measurements.where("datetime <= ?", "#{Chronic.parse(params[:end_date], :endian_precedence => :little)}")   if !params[:end_date].blank?
     @measurements = @measurements.where("device_id=?", params[:device_id])  if !params[:device_id].blank?
   end
 
