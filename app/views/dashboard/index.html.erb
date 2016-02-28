@@ -1,3 +1,31 @@
-<h1>Dashboard <%=params[:reference]%></h1>
+<h3>Dashboard <%=params[:reference]%></h3>
 
+<div>
 
+<% @measurements.each do |m| %>
+  <p><%=p m.inspect%></p>
+<% end %>
+
+</div>
+
+<div ng-controller="dashboard_ctrl">
+
+  <div class="row">
+    <div class="medium-8 columns">
+      <highchart id="chart1" config="tempGraphic" class="span9" ></highchart>
+    </div>
+    <div class="medium-4 columns">
+      [tabla de alertas con las temperaturas críticas y datetime]
+    </div>
+  </div>
+  
+
+  <div class="row">
+    <div class="medium-8 columns">
+      <highchart id="chart2" config="gyroGraphic" class="span9" ></highchart>
+    </div>
+    <div class="medium-4 columns">
+      [tabla de alertas con golpes y datetime]
+    </div>
+  </div>
+</div>

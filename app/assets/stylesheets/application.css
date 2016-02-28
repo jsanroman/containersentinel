@@ -12,4 +12,15 @@
  *
  *= require_tree .
  *= require_self
+ *= require foundation_and_overrides
+
  */
+
+input.large {
+  font-size: 1.25rem !important;
+  height: 3em;
+}
+
+.content-selector-reference {
+  margin-top: 5em;
+}

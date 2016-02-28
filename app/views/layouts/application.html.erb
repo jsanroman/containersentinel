@@ -1,14 +1,35 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>LoadControl</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="es" ng-app="load_control">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+
+    <script type="text/javascript">
+      var urlBase = "<%="#{request.protocol}#{request.host_with_port}"%>";
+    </script>
+  </head>
+
+  <body>
+    
+    <div class="top-bar">
+    <div class="row">
+    <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu="" role="menubar" data-dropdownmenu="dy40gu-dropdownmenu">
+    <li class="menu-text" role="menuitem" tabindex="0">Container Sentinel</li>
+    </ul>
+    </div>
+    </div>
+    </div>
+
+    <div class="row">
+      <%= yield %>
+    </div>
+
+  </body>
 </html>
