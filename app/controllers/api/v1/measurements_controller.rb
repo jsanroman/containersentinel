@@ -28,6 +28,8 @@ class Api::V1::MeasurementsController < ApplicationController
                             datetime: Time.at(line[0].to_i/1000).to_datetime})
       end
     end
+
+    render json: {}
   end
 
 
