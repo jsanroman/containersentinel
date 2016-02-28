@@ -16,9 +16,7 @@ var load_control = angular.module('load_control', ["highcharts-ng"]).run(['$root
 
 
 load_control.controller('dashboard_ctrl', ['$scope', 'measureFactory', function ($scope, measureFactory) {
-
-
-    measureFactory.find().success(function(data){
+    measureFactory.find({kind: 'temp'}).success(function(data){
       data2 = _.map(data, function (line) {
         return [line.timestamp, line.data1];
       })
