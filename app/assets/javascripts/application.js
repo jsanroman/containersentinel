@@ -13,7 +13,7 @@ var load_control = angular.module('load_control', ["highcharts-ng"]).run(['$root
 }]);
 
 
-load_control.controller('dashboard_ctrl', function ($scope) {
+load_control.controller('dashboard_ctrl', ['$scope', function ($scope) {
     $scope.tempGraphic = {
         series: [
           {
@@ -57,5 +57,5 @@ load_control.controller('dashboard_ctrl', function ($scope) {
             $scope.chartExport = $.proxy(chart.exportChart, chart);
         }
     }
-});
+}]);
 $(function(){ $(document).foundation(); });
