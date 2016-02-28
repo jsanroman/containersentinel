@@ -33,9 +33,9 @@ class Api::V1::MeasurementsController < ApplicationController
                             data4: line[5], 
                             datetime: Time.at(line[0].to_i/1000).to_datetime})
 
-        if _measurement.kind=='gps'
-          RestClient.get "https://jsanroman.cartodb.com/api/v2/sql?q=INSERT INTO ollocontainer (description, name, the_geom) VALUES ('description', 'name', ST_SetSRID(ST_Point(#{_measurement.data2}, #{_measurement.data1}),4326))&api_key=f01d8adf43cdd91138dd250357ecf48ae9f8102e"
-        end
+        # if _measurement.kind=='gps'
+        #   RestClient.get "https://jsanroman.cartodb.com/api/v2/sql?q=INSERT INTO ollocontainer (description, name, the_geom) VALUES ('description', 'name', ST_SetSRID(ST_Point(#{_measurement.data2}, #{_measurement.data1}),4326))&api_key=f01d8adf43cdd91138dd250357ecf48ae9f8102e"
+        # end
       end
     end
 
