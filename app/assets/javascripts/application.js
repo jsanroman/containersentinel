@@ -1,4 +1,3 @@
-//= require lodash
 //= require jquery
 //= require jquery_ujs
 //= require foundation
@@ -6,6 +5,8 @@
 //= require angular
 //= require highcharts
 //= require highcharts-ng
+//= require lodash
+//= require moment
 //= require_self
 //= require factories
 
@@ -33,7 +34,7 @@ load_control.controller('dashboard_ctrl', ['$scope', 'measureFactory', '$interva
     }
 
     var reload_accel = function(begin_date, end_date) {
-      measureFactory.find({kind: 'accel', begin_date: begin_date, end_date, end_date}).success(function(data){
+      measureFactory.find({kind: 'accel', begin_date: begin_date, end_date: end_date}).success(function(data){
         _timestamp = _.map(data, 'timestamp')
         _data1 = _.map(data, 'data1')
         _data2 = _.map(data, 'data2')
